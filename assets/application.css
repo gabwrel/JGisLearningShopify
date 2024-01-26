@@ -1,0 +1,19 @@
+html, body {}
+
+.inner-hero-section {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+
+.inner-hero-section img,
+.inner-hero-section svg {
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
