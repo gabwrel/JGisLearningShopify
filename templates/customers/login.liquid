@@ -1,5 +1,5 @@
 <div class="container py-5 my-5">
-    <div class="login-form shadow">
+    <div class="login-form mx-auto" style="max-width: 400px;">
         {% form 'customer_login'%}
             {% include 'form-error', form: form %}
             <h1 class="h3 text-center">Login</h1>
@@ -8,7 +8,22 @@
             <label for="password">Password</label>
             <input type="password" name="customer[password]" class="form-control rounded-0 my-2">
             <input type="submit" value="Sign in" class="btn btn-primary btn-lg w-100 rounded-0">
-            <a href="{{ routes.account_register_url }}" style="font-size: x-small; text-align: center;">Don't have an account? Create one here.</a>
+            <div class="text-center">
+                <a href="{{ routes.account_register_url }}" style="font-size: x-small;">Don't have an account?</a>
+            </div>
+        {% endform %}
+        <div class="text-center">
+            <a href="#recover" id="forgotPassword" style="font-size: x-small;">Forgot your password?</a>
+        </div>
+    </div>
+    <div class="forgot-password-form d-none" id="forgot_password_form">
+        {% form 'recover_customer_password' %}
+            {% include 'form-error' , form: form %}
+            <div class="col-12">
+                <label for="resetPassword">Email Address</label>
+                <input class="form-control" type="email" name="email" id="resetPassword">
+            </div>
+            <input type="submit" value="Reset Password" class="btn btn-dark">
         {% endform %}
     </div>
 </div>

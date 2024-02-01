@@ -1,0 +1,73 @@
+{% paginate blog.articles by 5 %}
+
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'blog.title' %}
+      <div class="position-relative text-center p-3 p-md-5">
+        <div class="col-md-5 p-lg-5 mx-auto my-5"></div>
+        <h1 class="display-4">{{ blog.title }}</h1>
+        <p class="lead">Read our latest publications</p>
+      </div>
+      
+    {% when 'blog.grid' %}
+      <div class="container my-5 p-2">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 py-5">
+          {% for article in blog.articles %}
+            <div class="col">
+              <div class="card shadow">
+                {% if article.image.src %}
+                  <img src="{{ article.image.src | asset_url }}" alt="{{ article.image.alt }}" class="card-img-top" width="{{ article.image.width }}" height="{{ article.image.height }}">
+                {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'card-img-top' }}
+                {% endif %}
+                <div class="card-body">
+                  <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+                  {{ article.author }} @ {{ article.created_at }}
+                  <p class="card-text ">
+                    {% if article.excerpt.size > 0 %}
+                      {{ article.excerpt }}
+                    {% else %}
+                      <p>{{ article.content | strip_html | truncatewords: 20 }}</p>
+                    {% endif %}
+                  </p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    {% when 'blog.pagination' %}
+      <div class="container my-2">
+        {% render 'pagination', paginate: paginate %}
+      </div>
+    {% else %}
+      
+  {% endcase %}
+{% endfor %}
+
+{% endpaginate %}
+
+{% schema %}
+{
+  "name": "Blog Section",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "blog_title",
+      "name": "Blog Title",
+      "limit": 1
+    },
+    {
+      "type": "blog_grid",
+      "name": "Blog Grid",
+      "limit": 1
+    },
+    {
+      "type": "blog_pagination",
+      "name": "Blog Pagination",
+      "limit": 1
+    }
+  ]
+}
+{% endschema %}

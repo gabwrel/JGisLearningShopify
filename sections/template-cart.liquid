@@ -1,26 +1,26 @@
-{% if cart.item_count > 0 %}
-  <div class="container vh-100">
+<div class="container-my-5">
+  {% if cart.item_count > 0 %}
     <div class="row">
       <p class="h2 my-5 text-center">Shopping Cart</p>
     </div>
     <div class="my-5">
       <form action="/cart" method="POST" class="row" novalidate>
         <div class="col-12 col-md-8">
-          <div class="card shadow ">
+          <div class="card shadow">
             <div class="card-body">
               <table class="table table-borderless">
                 <thead>
                   <th colspan="2">Product</th>
-                  <th>Price</th> 
+                  <th>Price</th>
                   <th>Qty</th>
-                  <th>total</th>
+                  <th>Total</th>
                 </thead>
                 <tbody>
                   {% for item in cart.items %}
                     <tr>
                       <td>
                         <a href="{{ item.url | within: collections.all }}">
-                          <img src="{{ item | img_url: 'small' }}" alt="{{ item.title | escape }}">
+                          <img src="{{ item | image_url: width: 100, height: 100 }}" alt="{{ item.title | escape }}" width="100" height="100">
                         </a>
                       </td>
                       <td>
@@ -47,25 +47,49 @@
         <div class="col-12 col-md-4">
           <div class="card shadow">
             <div class="card-body">
-              <div>
-                <p class="h3">Total amount is</p>
-                <p>{{ cart.total_price | money }}</p>
-                <div class="d-grid gap-2">
-                  <button type="submit" class="btn btn-primary" name="update">Update</button>
-                  <button type="submit" class="btn btn-primary" name="checkout">Checkout</button>
-                </div>
-              </div>
+              {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when "cart_total" %}
+                    <div class="cart-total-block">
+                      <p class="h3">Total amount is</p>
+                      <p>{{ cart.total_price | money }}</p>
+                    </div>
+                  {% when "cart_checkout_button" %}
+                    <div class="cart-checkout-buttons d-grid gap-2">
+                      <button type="submit" class="btn btn-primary" name="update">Update</button>
+                      <button type="submit" class="btn btn-primary" name="checkout">Checkout</button>
+                    </div>
+                  {% else %}
+                {% endcase %}
+              {% endfor %}
             </div>
           </div>
         </div>
       </form>
     </div>
-  </div>
-{% else %}
-  <div class="container">
+  {% else %}
     <div class="row">
       <h2 class="text-center">Cart</h2>
-      <p>Cart is empty</p>
+      <p class="text-center">Cart is empty</p>
     </div>
-  </div>
-{% endif %}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Template Cart",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "cart_total",
+      "name": "Cart Total",
+      "limit": 1
+    },
+    {
+      "type": "cart_checkout_button",
+      "name": "Cart Buttons",
+      "limit": 1
+    }
+  ]
+}
+{% endschema %}

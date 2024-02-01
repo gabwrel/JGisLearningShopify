@@ -6,63 +6,64 @@
             <div class="mb-4">
                 <p>{{ item.title }}</p>
                 <a href="{{ item.url }}">
-                    <img src="{{ item.image |  img_url: "master"}}" class="w-100">
+                    <img src="{{ item.image | img_url: 'master' }}" class="w-100">
                 </a>
             </div>
         {% else %}
-            <div class="mb-4">
-                <p>{{ item.title }}</p>
-                <p>{{ item.description }}</p>
-            </div>
+                <div class="mb-4">
+                    <p>{{ item.title}}</p>
+                    <p>{{ item.description}}</p>
+                </div>
         {% endif %}
-
         
     {% endfor %}
 </div>
 
 {% schema %}
-    {
-        "name": "Sidebar",
-        "blocks": [
-            {
-                "name": "Sidebar Image",
-                "type": "image",
-                "settings": [
-                    {
-                        "type": "text",
-                        "id": "title",
-                        "label": "Title",
-                        "default": "Sidebar Title"
-                    },
-                    {
-                        "type": "image_picker",
-                        "id": "image",
-                        "label": "Image"
-                    },
-                    {
-                        "type": "url",
-                        "id": "url",
-                        "label": "Link"
-                    }
-                ]
-            },
-            {
-                "name": "Sidebar Text",
-                "type": "text",
-                "settings": [
-                    {
-                        "type": "text",
-                        "id": "title",
-                        "label": "Title",
-                        "default": "Sidebar Title"
-                    },
-                    {
-                        "type": "richtext",
-                        "id": "description",
-                        "label": "Description"
-                    }
-                ]
-            }
-        ]
-    }
+{
+    "name": "Sidebar",
+    "class": "col-md-4 col-12",
+    "tag": "section",
+    "blocks": [
+        {
+            "name": "Sidebar Image",
+            "type": "image",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Sidebar Title"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "Link"
+                }
+            ]
+        },
+        {
+            "name": "Sidebar Text",
+            "type": "text",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Sidebar Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "description",
+                    "label": "Description"
+                }
+            ]
+        }
+    ]
+}
 {% endschema %}

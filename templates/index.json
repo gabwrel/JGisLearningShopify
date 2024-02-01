@@ -1,9 +1,22 @@
 {
-    "name": "Homepage",
     "sections": {
-        "template-homepage" : {
-            "type": "hero"
+        "hero": {
+            "type": "hero",
+            "settings": {
+                "image": "",
+                "title": "Welcome to Brand",
+                "description": "<p>Good day</p>",
+                "button_label": "Learn More",
+                "button_link": "https:\/\/google.com/"
+            }
+        },
+        "featured-collection": {
+            "type": "featured-collection",
+            "settings": {
+                "featured-collection": "",
+                "title": "Featured Collection"
+            }
         }
     },
-    "order": ["template-homepage"]
+    "order": ["hero", "featured-collection"]
 }

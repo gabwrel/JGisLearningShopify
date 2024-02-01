@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>{{ page_title }}</title>
@@ -16,8 +16,10 @@
   {% section 'translation' %}
   {% section 'header' %}
 
-  <main role="main">
-    {{ content_for_layout }}
+  <main class="container py-5" role="main">
+    <div class="row">
+        {{ content_for_layout }}
+    </div>
   </main>
   
   {% section 'footer-section' %}
