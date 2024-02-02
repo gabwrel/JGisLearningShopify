@@ -1,4 +1,4 @@
-<footer class="footer-section bg-light py-5 mt-5">
+<footer class="footer-section bg-dark py-5 mt-5">
     <div class="container p-4">
         <div class="row row-cols-1 row-cols-md-{{ section.settings.col_num }}">
             {% for block in section.blocks %}
@@ -17,7 +17,7 @@
                     </div>
                 {% else if block.type == "text" %}
                     <div class="col">
-                        <img src="{{ item.logo | img_url: 'medium' }}" class="mb-5">
+                        <img src="{{ item.logo | image_url }}" class="mb-5" width="" height="">
                         <h5>{{ item.title }}</h5>
                         <p>{{ item.description }}</p>
                     </div>
@@ -28,15 +28,13 @@
     {% if section.settings.enable_payment_type_icons %}
         <div class="container justify-content-center d-flex">
             {% for payment_type in shop.enabled_payment_types %}
-                <img src="{{ payment_type | payment_type_img_url }}">
+                <img src="{{ 'payment-type-' | append: payment_type | append: '.png' | asset_url }}" width="" height="">
+
             {% endfor %}
         </div>
     {% endif %}
     
 </footer>
-
-{{ 'bootstrap.min.js' | asset_url | script_tag }}
-{{ 'application.js' | asset_url | script_tag }}
 
 {% schema %}
 {
@@ -48,7 +46,8 @@
             "default": 3,
             "min": 2,
             "max": 4,
-            "label": "Number of Columns"
+            "label": "Number of Columns",
+            "step": 1
         },
         {
             "type": "checkbox",
