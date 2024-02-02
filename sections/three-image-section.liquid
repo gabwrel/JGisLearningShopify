@@ -1,0 +1,56 @@
+<!-- inner-three-image-section.liquid -->
+<section id="inner-three-image-section">
+    <div class="row image-container">
+        <div class="image-item">
+            {% if section.settings.image1 != blank %}
+                <img src="{{ section.settings.image1 | image_url }}" alt="{{ section.settings.image1.alt }}" style="width: 30vw;" height="" width="">
+            {% else %}
+                {% assign placeholder = 'lifestyle-2' %}
+                {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+        </div>
+        <div class="image-item">
+            {% if section.settings.image2 != blank %}
+                <img src="{{ section.settings.image2 | image_url }}" alt="{{ section.settings.image2.alt }}" style="width: 30vw;" height="" width="">
+            {% else %}
+                {% assign placeholder = 'lifestyle-2' %}
+                {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+        </div>
+        <div class="image-item">
+            {% if section.settings.image3 != blank %}
+                <img src="{{ section.settings.image3 | image_url }}" alt="{{ section.settings.image3.alt }}" style="width: 30vw;" height="" width="">
+            {% else %}
+                {% assign placeholder = 'lifestyle-2' %}
+                {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+
+
+
+{% schema %}
+    {
+    "name": "Three Image Section",
+    "class": "three-image-section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image1",
+            "label": "First Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image2",
+            "label": "Second Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image3",
+            "label": "Third Image"
+        }
+    ]
+}
+{% endschema %}

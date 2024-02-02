@@ -16,7 +16,31 @@
                 "featured-collection": "",
                 "title": "Featured Collection"
             }
+        },
+        "centered-content-section": {
+            "type": "centered-content-section",
+            "settings": {
+                "image": "",
+                "title": "Centered Section Title",
+                "subtext": "Some Subtext Here",
+                "button_link": "https:\/\/example.com/",
+                "button_label": "Click Me"
+            }
+        },
+        "image-banner-section" : {
+            "type": "image-banner-section",
+            "settings": {
+                "image" : ""
+            }
+        },
+        "three-image-section": {
+            "type": "three-image-section",
+            "settings": {
+                "image1": "",
+                "image2": "",
+                "image3": ""
+            }
         }
     },
-    "order": ["hero", "featured-collection"]
+    "order": ["hero", "featured-collection", "centered-content-section", "image-banner-section", "three-image-section"]
 }

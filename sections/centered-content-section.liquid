@@ -1,0 +1,56 @@
+<section class="container text-center">
+  <div class="container px-5">
+    {% if section.settings.image != blank %}
+      <img src="{{ section.settings.image | image_url }}" alt="{{ section.settings.image.alt}}" width="" height="">
+    {% else %}
+      {% assign placeholder = 'lifestyle-2' %}
+      {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+    <h2>{{ section.settings.title }}</h2>
+    <h5>{{ section.settings.subtext }}</h5>
+    <a href="{{ section.settings.button_link }}" class="btn btn-secondary pt-2">{{ section.settings.button_label }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CenteredContentSection",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image Heading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Section Title"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Section Subtext"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Heading Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Click me"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CenteredContentSection",
+      "category": "Custom"
+    }
+  ]
+}
+
+{% endschema %}

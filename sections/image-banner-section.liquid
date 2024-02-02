@@ -1,0 +1,23 @@
+<section id="inner-image-banner-section">
+    {% if section.settings.image != blank %}
+        <img src="{{ section.settings.image | image_url }}" alt="{{ section.settings.image.alt}}" width="" height="">
+    {% else %}
+        {% assign placeholder = 'lifestyle-2' %}
+        {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+    <div class="container"></div>
+</section>
+
+{% schema %}
+    {
+        "name": "Image Banner Section",
+        "class": "image-banner-section",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            }
+        ]
+    }
+{% endschema %}

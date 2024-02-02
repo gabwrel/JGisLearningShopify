@@ -22,7 +22,7 @@
                     "type": "description"
                 }
             },
-            "block_order": ["title", "price", "variant_selector", "quantity", "checkout_buttons", "descriptionS"]
+            "block_order": ["title", "price", "variant_selector", "quantity", "checkout_buttons", "description"]
         },
         "product-recommendation": {
             "type": "product-recommendation"

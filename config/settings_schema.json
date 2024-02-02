@@ -15,6 +15,12 @@
         "id": "navbar_color",
         "label": "NavBar Background Colors",
         "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "header_text_color",
+        "label": "Header Text Color",
+        "default": "#fff"
       }
     ]
   },
