@@ -4,7 +4,7 @@
   {% assign container_class = 'container-fluid' %}
 {% endif %}
 
-<div class="{{ container_class }} my-5">
+<div class="{{ container_class }} my-5 shadow rounded-2 p-4 bg-white" style="height: 65vh;">
   {% for block in section.blocks %}
       {% case block.type %}
           {% when 'page_title' %}

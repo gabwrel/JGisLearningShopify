@@ -1,7 +1,7 @@
 <div class="container py-5 my-5">
     <div class="login-form mx-auto" style="max-width: 400px;">
         {% form 'customer_login'%}
-            {% include 'form-error', form: form %}
+            {% render 'form-error', form: form %}
             <h1 class="h3 text-center">Login</h1>
             <label for="emailAddress">Email Address</label>
             <input type="email" name="customer[email]" class="form-control rounded-0 my-2">
@@ -18,7 +18,7 @@
     </div>
     <div class="forgot-password-form d-none" id="forgot_password_form">
         {% form 'recover_customer_password' %}
-            {% include 'form-error' , form: form %}
+            {% render 'form-error' , form: form %}
             <div class="col-12">
                 <label for="resetPassword">Email Address</label>
                 <input class="form-control" type="email" name="email" id="resetPassword">

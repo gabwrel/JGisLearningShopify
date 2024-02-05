@@ -27,6 +27,9 @@
                 "button_label": "Click Me"
             }
         },
+
+
+        
         "image-banner-section" : {
             "type": "image-banner-section",
             "settings": {

@@ -1,6 +1,6 @@
 <section id="inner-image-banner-section">
     {% if section.settings.image != blank %}
-        <img src="{{ section.settings.image | image_url }}" alt="{{ section.settings.image.alt}}" width="" height="">
+        <img src="{{ section.settings.image | image_url }}" alt="{{ section.settings.image.alt}}" width="" height="" style="max-height: 100vh; max-width: 100vw; width: 100%; height: auto; position: top;">
     {% else %}
         {% assign placeholder = 'lifestyle-2' %}
         {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}

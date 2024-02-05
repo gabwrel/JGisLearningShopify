@@ -13,7 +13,6 @@
   {{ 'font-styles.css' | asset_url | stylesheet_tag }}
 </head>
 <body>
-  {% section 'translation' %}
   {% section 'header' %}
 
   <main class="container py-5" role="main">
@@ -21,7 +20,8 @@
         {{ content_for_layout }}
     </div>
   </main>
-  
+  <script src="{{ 'bootstrap.min.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'application.js' | asset_url }}" defer="defer"></script>
   {% section 'footer-section' %}
 </body>
 </html>

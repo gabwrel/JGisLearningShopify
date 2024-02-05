@@ -11,9 +11,12 @@
   {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
   {{ 'application.css' | asset_url | stylesheet_tag }}
   {{ 'font-styles.css' | asset_url | stylesheet_tag }}
+  
+
 </head>
 <body>
-  {% section 'translation' %}
+  <script src="{{ 'bootstrap.min.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'application.js' | asset_url }}" defer="defer"></script>
   {% section 'header' %}
 
   <main role="main">
